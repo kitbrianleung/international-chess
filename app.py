@@ -131,7 +131,7 @@ def new_game():
     return jsonify({
         'fen': board.fen(),
         'board': get_board_state(board),
-        'pgn': get_pgn_history(board),
+        'pgn': get_pgn_history(board, board.fen()),
         'turn': 'white',
         'status': 'game_started',
         'message': 'New game started. Your move as White.'
