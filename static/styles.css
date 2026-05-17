@@ -1,0 +1,148 @@
+:root {
+  --light: #f0d9b5;
+  --dark: #b58863;
+  --border: #333;
+  --background: #121212;
+  --surface: #1f1f1f;
+  --text: #f7f7f7;
+  --accent: #78a0ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #2b2b4f, #121212 50%);
+  color: var(--text);
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 2.7vw, 3rem);
+}
+
+p {
+  margin: 12px auto 0;
+  max-width: 720px;
+  color: #d0d0d0;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #121212;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.status {
+  flex: 1;
+  min-width: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.board-container {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) 300px;
+  gap: 18px;
+}
+
+.chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(42px, 1fr));
+  gap: 0;
+  border: 4px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #333;
+}
+
+.square {
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  font-size: clamp(1.5rem, 2.3vw, 2.5rem);
+  cursor: pointer;
+  user-select: none;
+}
+
+.square.light {
+  background: var(--light);
+  color: #343434;
+}
+
+.square.dark {
+  background: var(--dark);
+  color: #111;
+}
+
+.square.selected {
+  outline: 4px solid rgba(120, 160, 255, 0.8);
+}
+
+.square.legal {
+  box-shadow: inset 0 0 0 4px rgba(120, 160, 255, 0.25);
+}
+
+.info-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.panel-section {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: var(--text);
+  resize: none;
+  padding: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@media (max-width: 860px) {
+  .board-container {
+    grid-template-columns: 1fr;
+  }
+}

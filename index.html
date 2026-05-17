@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>International Chess vs Robot</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <h1>International Chess vs Robot</h1>
+      <p>Play standard chess as White against a robot that respects all legal moves.</p>
+    </header>
+
+    <section class="controls">
+      <button id="newGameBtn">New Game</button>
+      <div id="status" class="status">Your move.</div>
+    </section>
+
+    <section class="board-container">
+      <div id="chessBoard" class="chess-board" data-fen="{{ fen }}"></div>
+      <div class="info-panel">
+        <div class="panel-section">
+          <strong>Turn:</strong> <span id="turn">White</span>
+        </div>
+        <div class="panel-section">
+          <strong>Last message:</strong>
+          <div id="message">Start a new game or make a move.</div>
+        </div>
+        <div class="panel-section">
+          <strong>PGN History:</strong>
+          <textarea id="pgn" readonly rows="5"></textarea>
+        </div>
+        <div class="panel-section">
+          <strong>FEN:</strong>
+          <textarea id="fen" readonly rows="2">{{ fen }}</textarea>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="game-data" style="display:none;"
+       data-board='{{ board_state | default([], true) | tojson }}'
+       data-pgn='{{ pgn | default('', true) | tojson }}'>
+  </div>
+  <script src="/static/main.js"></script>
+</body>
+</html>
